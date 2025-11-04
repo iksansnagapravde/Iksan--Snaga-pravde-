@@ -1,172 +1,157 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ИКСАН • Снага правде</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ИКСАН • Снага правде — Почетна</title>
+  <meta name="description" content="ИКСАН — покрет грађана. Правда није роба. Време је да се врати народу.">
   <style>
     :root {
-      --bg: #f5f5f5;
-      --ink: #222;
-      --gold: #c62828;
-      --accent: #b71c1c;
-      --white: #fff;
+      --bg: #0B2141;
+      --bg2: #102D57;
+      --ink: #fff;
+      --muted: #cfe1ff;
+      --gold: #FFB300;
+      --gold-d: #e2a300;
+      --card: #102D57;
+      --line: rgba(255,255,255,.14);
     }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      padding: 0;
-      font-family: "Arial", sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--ink);
-      line-height: 1.6;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
     }
-
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
     header {
-      background-color: var(--gold);
-      color: var(--white);
-      text-align: center;
-      padding: 25px 10px;
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 1px;
+      position: sticky; top: 0; z-index: 60;
+      background: linear-gradient(180deg, rgba(11,33,65,.95), rgba(11,33,65,.8));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
     }
-
-    nav {
-      background-color: var(--accent);
-      display: flex;
-      justify-content: center;
-      gap: 25px;
+    .head {
+      display: flex; align-items: center; justify-content: space-between;
       padding: 10px 0;
-      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; }
+    .brand img { height: 40px; border-radius: 10px; }
+    nav.nav { display: flex; gap: 18px; font-weight: 700; flex-wrap: wrap; }
+    nav.nav a { opacity: .8; border-bottom: 2px solid transparent; padding-bottom: 4px; }
+    nav.nav a.active, nav.nav a:hover { opacity: 1; border-bottom-color: var(--gold); }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line);
+      font-weight: 800;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--bg); border-color: transparent;
+      box-shadow: 0 8px 18px rgba(255,179,0,.25);
     }
 
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
+    .hero { padding: 34px 0 26px; }
+    .hero-grid {
+      display: grid; gap: 20px; grid-template-columns: 1fr; align-items: center;
+    }
+    @media (min-width: 980px) {
+      .hero-grid { grid-template-columns: 1.1fr .9fr; }
+    }
+    .kicker {
+      display: inline-block; padding: 6px 10px;
+      border: 1px solid var(--line); border-radius: 999px;
+      background: rgba(10,20,40,.4); font-weight: 800; letter-spacing: .3px;
+    }
+    h1 {
+      margin: .6rem 0 0; font-size: clamp(30px,5.5vw,52px);
+      line-height: 1.08; font-weight: 900;
+    }
+    .sub {
+      margin: 12px 0 16px; max-width: 680px;
+      color: var(--muted); font-size: clamp(15px,2.1vw,20px);
+    }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-media {
+      position: relative; border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--line); box-shadow: 0 16px 44px rgba(0,0,0,.35);
+    }
+    .hero-media img {
+      display: block; width: 100%; height: min(420px,58vh);
+      object-fit: cover; object-position: center 62%; transform: scale(1.03);
     }
 
-    nav a:hover {
-      color: gold;
+    section { padding: 42px 0; }
+    .cards {
+      display: grid; gap: 16px; grid-template-columns: 1fr;
     }
-
-    .hero {
-      position: relative;
-      text-align: center;
-      color: white;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-        url('assets/hero.jpg') center/cover no-repeat;
-      padding: 120px 20px;
-      text-shadow: 1px 1px 4px black;
+    @media (min-width: 900px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
     }
-
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.22);
     }
-
-    .hero p {
-      font-size: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    section {
-      background-color: var(--white);
-      margin: 40px auto;
-      padding: 30px;
-      max-width: 1000px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    section h2 {
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    section p {
-      font-size: 18px;
-    }
-
-    .button {
-      display: inline-block;
-      background-color: var(--accent);
-      color: var(--white);
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
-      margin-top: 10px;
-    }
-
-    .button:hover {
-      background-color: #8e0000;
-    }
-
+    .card h3 { margin: 0 0 8px 0; color: var(--gold); }
+    .cta-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: 10px; opacity: .95; }
+    .cta-link::after { content: '→'; }
     footer {
-      background-color: #222;
-      color: #eee;
-      text-align: center;
-      padding: 30px 10px;
-      font-size: 14px;
-      margin-top: 40px;
+      border-top: 1px solid var(--line); padding: 24px 0;
+      color: var(--muted); text-align: center;
     }
-
   </style>
 </head>
 <body>
-  <header>ИКСАН • Снага правде</header>
+  <header>
+    <div class="container head">
+      <div class="brand">
+        <img src="assets/logo.png" alt="ИКСАН">
+        <span>ИКСАН • Снага правде</span>
+      </div>
+      <nav class="nav">
+        <a href="o-nama.html">О нама</a>
+        <a href="oblasti.html">Области</a>
+        <a href="ciljevi.html">Циљеви</a>
+        <a href="inicijative.html">Иницијативе</a>
+        <a href="kontakt.html">Контакт</a>
+      </nav>
+      <a href="postani-clan.html" class="btn btn-primary">Учлани се</a>
+    </div>
+  </header>
 
-  <nav>
-    <a href="index.html">Почетна</a>
-    <a href="o-nama.html">О нама</a>
-    <a href="ciljevi.html">Циљеви</a>
-    <a href="oblasti.html">Области</a>
-    <a href="inicijative.html">Иницијативе</a>
-    <a href="kontakt.html">Контакт</a>
-  </nav>
+  <main class="container hero">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">ПРАВДА НИЈЕ РОБА</span>
+        <h1>ВРЕМЕ ЈЕ ДА СЕ<br> ВРАТИ НАРОДУ.</h1>
+        <p class="sub">Заустављамо похлепу, бранимо достојанство, враћамо веру у систем. ИКСАН — покрет грађана који стоји иза сваког човека коме је доста неправде.</p>
+        <div class="cta-row">
+          <a href="kontakt.html" class="btn btn-primary">Затражи помоћ сада</a>
+          <a href="o-nama.html" class="btn">Сазнај више</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/hero.webp" alt="Људи држе ИКСАН плакат испред дуге">
+      </div>
+    </div>
+  </main>
 
-  <div class="hero">
-    <h1>ПРАВДА НИЈЕ РОБА. ВРЕМЕ ЈЕ ДА СЕ ВРАТИ НАРОДУ.</h1>
-    <p>Заустављамо похлепу, бранимо достојанство, враћамо веру у систем.<br>ИКСАН — покрет грађана који стоји иза сваког човека коме је доста неправде.</p>
-  </div>
-
-  <section>
-    <h2>1. УКИДАЊЕ ПРИВАТНИХ ИЗВРШИТЕЉА: ПРАВДА, А НЕ ПРОЦЕНАТ</h2>
-    <p>Доста је било страха и понижења. Тражимо да се извршење врати у суд, где му је место — да се правда брани, а не продаје.</p>
-    <a href="#" class="button">Сазнај више →</a>
-  </section>
-
-  <section>
-    <h2>2. ПОРЕКЛО НОВЦА — ОД КУД ТИ?</h2>
-    <p>Корупција није судбина него избор. Правда почиње онда кад имовина постане јавна, а порекло новца јасно.</p>
-    <a href="#" class="button">Сазнај више →</a>
-  </section>
-
-  <section>
-    <h2>3. СУД МОРА БИТИ ХРАМ ПРАВДЕ, А НЕ ВОЉЕ ПОЈЕДИНАЦА</h2>
-    <p>Доста је било судија по мери моћних, политике и закона без душе. Време је да се суд врати народу — да поново постане место истине, достојанства и правде.</p>
-    <a href="#" class="button">Сазнај више →</a>
-  </section>
-
-  <section>
-    <h2>ПРАВНА ПОМОЋ — БЕЗ СТРАХА И КОМПЛИКАЦИЈА</h2>
-    <p>Сваки грађанин има право да се брани, приговори, поднесе жалбу или питање. Наши адвокати и правници стоје уз вас.</p>
-    <a href="#" class="button">Затражи помоћ сада →</a>
-  </section>
-
-  <section>
-    <h2>ПОСТАНИ ДЕО ПОКРЕТА</h2>
-    <p>Учлани се, донирај или волонтирај — јер правда није идеја, већ заједничка борба.</p>
-    <a href="#" class="button">Придружи се ИКСАН-у →</a>
+  <section class="container">
+    <div class="cards">
+      <div class="card">
+        <h3>1. УКИДАЊЕ ПРИВАТНИХ ИЗВРШИТЕЉА: ПРАВДА, А НЕ ПРОЦЕНАТ</h3>
+        <p>Доста је било страха и понижења. Тражимо да се извршење врати у суд, где му је место — да се правда брани, а не продаје.</p>
+        <a href="inicijative.html" class="cta-link">Сазнај више</a>
+      </div>
+      <div class="card">
+        <h3>2. ПОРЕКЛО НОВЦА — ОД КУДА ТИ?</h3>
+        <p>Корупција није судбина него избор. Правда почиње тамо где имовина постане јавна, а порекло новца јасно.</p>
+        <a href="inicijative.html" class="cta-link">Сазнај више</a>
+      </div>
+    </div>
   </section>
 
   <footer>
-    „Снага правде је у народу.“ © 2025 ИКСАН – Покрет за правду, достојанство и хуманост
+    © 2025 ИКСАН — Снага правде. Сва права задржана.
   </footer>
 </body>
 </html>
